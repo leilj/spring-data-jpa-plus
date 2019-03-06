@@ -11,7 +11,7 @@ public class DemoApplication {
 ```java
 @RequestMapping(value = "/api/accounts", method = RequestMethod.GET)
 public Page<Account> query(@RequestBody AccountQuery query) {
-    return accountRepository.findAll(query);
+    return accountRepository.find(query);
 }
 ```
 
@@ -23,14 +23,14 @@ public void query() {
         query.setVersion(">10&<=10");
         qurey.setUsername("*demo-%");
         //from account where version > 10 and version <= 10 and username like "demo-%"; 
-        accountRepository.findAll(query);
+        accountRepository.find(query);
     }
     
     {
         AccountQuery query = new AccountQuery();
         query.setVersion("0|>10");
         //from account where version = 0 or version > 10; 
-        accountRepository.findAll(query);
+        accountRepository.find(query);
     }
 }
 ```
